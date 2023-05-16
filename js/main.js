@@ -1,25 +1,23 @@
+export let emailValue;
 $(document).ready(()=>{
-    const email=$("#email").val();
-    const password=$("#password").val();
-    const username=$("#username").val();
+    const email=$("#email");
    const btnSubmit = $("#btnSubmit")
-//    if(!email){
-//     $("#password").addClass("notShow");
-//     $("#username").addClass("notShow");
-//     }
-//    if(!email || !password || !username){
-//      btnSubmit.attr("type", "button");
-//    }
+    let errorEmail;
+    
+const regex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+   // w => [A-Za-z0-9]
 btnSubmit.click((e)=>{
     e.preventDefault();
-    console.log(password);
-    if(email ){
-        $("#email").hide();
-        $("#password").show();
-    }else if(password){
-        $("#password").hide();
-        $("#username").show();
-    }
+   if(!email.val()){
+      errorEmail="Veillez remplir le champs pour continuer";
+      $("#errorEmail").text(errorEmail);
+   }else if(!regex.test(email.val())){
+      errorEmail="Votre addresse email est invalide";
+      $("#errorEmail").text(errorEmail);
+   }else{
+       sessionStorage.setItem("email", email.val());
+      window.location.href="../pages/cmpleteRegister.html";
+   }
 })
 
 
