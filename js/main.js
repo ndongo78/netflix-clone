@@ -1,6 +1,6 @@
 
-const apiUrl="https://api.themoviedb.org/3/"
-const api_key="c9fea28ebb8e967442522ed79ad32352";
+
+
 
 
 const renderList=(list,balise)=>{
